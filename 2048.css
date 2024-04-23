@@ -1,0 +1,19 @@
+.grid-container {
+  height:	400px;
+  max-height:400px;
+  width:100%;
+  max-width:400px;
+ display: grid;
+  grid-template-columns: 24% 24% 24% 24%;
+  grid-gap: 1%;
+  background-color: #BBADA0;
+  padding: 0.5%;
+}
+.grid-item {
+  background-color: #CDC1B4;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  font-size: 40px;
+  padding: 23px;
+  text-align: center;
+  font-family: Arial, Verdana, sans-serif;
+}
