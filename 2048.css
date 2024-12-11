@@ -5,8 +5,10 @@ body, html {
   margin: 0;
   padding: 0;
   height: 100%;
+  width: 100%;
   overflow: hidden;
 }
+
 .grid-container {
   height:	400px;
   max-height:400px;
