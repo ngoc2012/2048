@@ -28,28 +28,14 @@ body, html {
   text-align: center;
   font-family: Arial, Verdana, sans-serif;
 }
+
 #app {
   display: inline-flex;
   align-items: center;
   grid-gap: 20px;
-  border:rgba(0, 0, 0, 0.8) solid 1px;
 }
 
 #app button {
-  height: 50px;
+  height: 50%;
   padding: 10px;
-}
-
-body {
-  /* background-color: #FAF8EF;
-  font-family: Arial, Verdana, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center; */
-  height: 100vh;
-  width: 100vw;
-  margin: 0;
-  padding: 0;
-  border:rgba(0, 0, 0, 0.8) solid 1px;
-
 }
