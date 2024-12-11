@@ -6,8 +6,6 @@ var table = [
 ];
 
 var score = 0;
-
-
 	
 function writeTable(){
 	$(() => {
@@ -138,8 +136,6 @@ function endAction(move) {
 }
 
 function newDice() {
-	score = 0;
-	updateScore();
 	if (checkBlank()==true) {
 		var x = 0;
 		var y = 0;
@@ -290,6 +286,8 @@ $(() => {
 	writeTable();
 
 	$("button").click(() => {
+		score = 0;
+		updateScore();
 		table = [[0, 0, 0, 0],
 				[0, 0, 0, 0],
 				[0, 0, 0, 0],
