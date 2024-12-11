@@ -326,7 +326,6 @@ $(() => {
         startX = e.originalEvent.touches[0].clientX;
 		startY = e.originalEvent.touches[0].clientY;
 		e.preventDefault();
-		$('#output').html('touchstart');
     });
 
     $('body').on('touchmove', (e) => {
