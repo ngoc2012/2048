@@ -1,4 +1,3 @@
-
 var table = [
 	[0, 0, 0, 0],
 	[0, 0, 0, 0],
@@ -11,7 +10,7 @@ var score = 0;
 
 	
 function writeTable(){
-	$(function(){
+	$(() => {
 		var background_color = "#EEE4DA";
 		var text_color = "#776E65";
 		for (i = 0; i < 4; i++) { 
@@ -100,6 +99,10 @@ function checkBlank(){
 	return blank;
 }
 
+function updateScore() {
+	$('#score').html("Score: " + score);
+}
+
 function gameOver(){
 	if (!checkBlank()) {
 		// check if 2 same number are nearby
@@ -124,7 +127,7 @@ function gameOver(){
 	}
 }
 
-function endAction(move){
+function endAction(move) {
 	if (move>0) {
 		newDice();
 		writeTable();
@@ -134,7 +137,7 @@ function endAction(move){
 	gameOver();
 }
 
-function newDice(){
+function newDice() {
 	if (checkBlank()==true) {
 		var x = 0;
 		var y = 0;
@@ -150,7 +153,7 @@ function newDice(){
 	}
 }
 
-function moveLeft(){
+function moveLeft() {
 	$('#output').html('Left');
 	var move = 0;
 	for (i = 0; i < 4; i++) {
@@ -167,7 +170,7 @@ function moveLeft(){
 					if ((table[i][k-1] == table[i][j])) {
 						table[i][k-1] = 2*table[i][j];
 						score += 2*table[i][j];
-						$('#score').html("Score :" + score);
+						updateScore();
 						table[i][j] = 0;
 						move++;
 					}
@@ -197,7 +200,7 @@ function moveUp(){
 					if ((table[k-1][j] == table[i][j])) {
 						table[k-1][j] = 2*table[i][j];
 						score += 2*table[i][j];
-						$('#score').html("Score :" + score);
+						updateScore();
 						table[i][j] = 0;
 						move++;
 					}
@@ -227,7 +230,7 @@ function moveRight(){
 					if ((table[i][k+1] == table[i][j])) {
 						table[i][k+1] = 2*table[i][j];
 						score += 2*table[i][j];
-						$('#score').html("Score :" + score);
+						updateScore();
 						table[i][j] = 0;
 						move++;
 					}
@@ -258,7 +261,7 @@ function moveDown(){
 					if ((table[k+1][j] == table[i][j])) {
 						table[k+1][j] = 2*table[i][j];
 						score += 2*table[i][j];
-						$('#score').html("Score :" + score);
+						updateScore();
 						table[i][j] = 0;
 						move++;
 					}
@@ -273,18 +276,18 @@ function moveDown(){
 	endAction(move);
 }
 
-$(function(){
-	for(j=0;j<4;j++){
-	for(i=0;i<4;i++){
-	$(".grid-container").append("<div class = grid-item data-row=" + i + " data-col=" + j + "></div>");
-}}
+$(() => {
+	for(j = 0; j < 4; j++) {
+		for(i = 0; i < 4; i++) {
+			$(".grid-container").append("<div class = grid-item data-row=" + i + " data-col=" + j + "></div>");
+	}}
 	
-newDice();
-newDice();
-$('#score').html("Score :" + score);
-writeTable();
+	newDice();
+	newDice();
+	updateScore();
+	writeTable();
 
-	$("button").click(function(){
+	$("button").click(() => {
 		table = [[0, 0, 0, 0],
 				[0, 0, 0, 0],
 				[0, 0, 0, 0],
@@ -294,27 +297,57 @@ writeTable();
 		writeTable();
 	});
 		
-    $('html').keydown(function(e){
+    $('html').keydown((e) => {
 		$('#output').html(e.which);
 		switch (e.which) {
 			// Up: 38, down: 40, left: 37, right: 39;
-			case 37:
-				// Left
+			case 37: // Left
 				moveLeft();
 				break;
-			case 38:
-				// Up
+			case 38: // Up
 				moveUp();
 				break;
-			case 39:
-				// Right
+			case 39: // Right
 				moveRight();
 				break;
-			case 40:
-				// Down
+			case 40: // Down
 				moveDown();
 				break;
 		}
 		
+    });
+
+	let startY = 0;
+    let endY = 0;
+	let startX = 0;
+    let endX = 0;
+
+    $('body').on('touchstart', (e) => {
+        startX = e.originalEvent.touches[0].clientX;
+		startY = e.originalEvent.touches[0].clientY;
+		e.preventDefault();
+		$('#output').html('touchstart');
+    });
+
+    $('body').on('touchmove', (e) => {
+        endX = e.originalEvent.touches[0].clientX;
+		endY = e.originalEvent.touches[0].clientY;
+		e.preventDefault();
+    });
+
+    $('body').on('touchend', (e) => {
+		if (Math.abs(startX - endX) > Math.abs(startY - endY)) {
+			if (startX > endX) {
+				moveLeft();
+			} else {
+				moveRight();
+			}
+		} else {
+			if (startY > endY) {
+				moveUp();
+			} else {
+				moveDown();
+			}
+		}
     });
 });

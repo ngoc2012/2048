@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2048</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -10,13 +11,12 @@
 </head>
 
 <body>
-<header>
-<h1>2048</h1><br>
-<h5> Welcome to 2048 game</h5>
-</header>
-<button id="btn_initialize" type="button"> Click Here to start game!</button>
-<div id="score"></div>
-<div class="grid-container"></div>
-<div id="output"></div>
+    <div id="app">
+        <h1>2048 game</h1>
+        <button id="btn_initialize" type="button"> Restart game</button>
+        <h4 id="score"></h4>
+    </div>
+    <div class="grid-container"></div>
+    <div id="output"></div>
 </body>
 </html>

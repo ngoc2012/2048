@@ -1,9 +1,18 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
 .grid-container {
   height:	400px;
   max-height:400px;
   width:100%;
   max-width:400px;
- display: grid;
+  display: grid;
   grid-template-columns: 24% 24% 24% 24%;
   grid-gap: 1%;
   background-color: #BBADA0;
@@ -16,4 +25,29 @@
   padding: 23px;
   text-align: center;
   font-family: Arial, Verdana, sans-serif;
+}
+#app {
+  display: inline-flex;
+  align-items: center;
+  grid-gap: 20px;
+  border:rgba(0, 0, 0, 0.8) solid 1px;
+}
+
+#app button {
+  height: 50px;
+  padding: 10px;
+}
+
+body {
+  /* background-color: #FAF8EF;
+  font-family: Arial, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center; */
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  border:rgba(0, 0, 0, 0.8) solid 1px;
+
 }
