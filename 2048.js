@@ -138,6 +138,8 @@ function endAction(move) {
 }
 
 function newDice() {
+	score = 0;
+	updateScore();
 	if (checkBlank()==true) {
 		var x = 0;
 		var y = 0;
